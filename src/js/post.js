@@ -1,15 +1,21 @@
-let post = {
-	'title': [],
-	'description': [],
-	'file': []
+let post = {};
+
+function setPost(id, title, description) {
+	if (post[id]) {
+		post[id].push(title);
+		post[id].push(description);
+	}
+	else {
+		post[id] = [title, description];
+	}
 }
 
 let savePost = (title, description, file) => {
-	post.title.push(title);
-	post.description.push(description);
-	post.file.push(file);
+	let keyPost = (Object.keys(post));
+	let id = keyPost.length ? parseInt(keyPost[keyPost.length-1]) + 1 : 0;	
 
-	localStorage.setItem('title', JSON.stringify(post.title));
-	localStorage.setItem('description', JSON.stringify(post.description));
-	localStorage.setItem('file', JSON.stringify(post.file));
+	setPost(id, title, description);
+	let set = post;
+
+	localStorage.setItem('post', JSON.stringify(set));
 }

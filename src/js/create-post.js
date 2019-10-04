@@ -8,6 +8,7 @@
 		savePost(formTitle[0].value, formDescription[0].value, formFile[0].value);
 		let alert = $('.alert');
 		alert[0].classList.remove('d-none');
+		alert[0].classList.remove('fade');
 		alert[0].classList.add('alert-success');
 	});
 })();
